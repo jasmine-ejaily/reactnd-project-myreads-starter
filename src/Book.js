@@ -5,9 +5,11 @@ class Book extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange(e) {
     this.props.update(this.props.book, e.target.value);
   }
+
   render() {
     const { title, author, cover, shelf } = this.props;
 

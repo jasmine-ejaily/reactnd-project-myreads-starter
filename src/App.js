@@ -68,7 +68,44 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className='list-books-content'>
-              <ListBooks books={this.state.books} update={this.updateShelf} />
+              <div>
+                <div className='bookshelf'>
+                  <h2 className='bookshelf-title'>Currently Reading</h2>
+                  <div className='bookshelf-books'>
+                    <ol className='books-grid'>
+                      <ListBooks
+                        books={this.state.books}
+                        update={this.updateShelf}
+                        shelf='currentlyReading'
+                      />
+                    </ol>
+                  </div>
+                </div>
+                <div className='bookshelf'>
+                  <h2 className='bookshelf-title'>Want To Read</h2>
+                  <div className='bookshelf-books'>
+                    <ol className='books-grid'>
+                      <ListBooks
+                        books={this.state.books}
+                        update={this.updateShelf}
+                        shelf='wantToRead'
+                      />
+                    </ol>
+                  </div>
+                </div>
+                <div className='bookshelf'>
+                  <h2 className='bookshelf-title'>Read</h2>
+                  <div className='bookshelf-books'>
+                    <ol className='books-grid'>
+                      <ListBooks
+                        books={this.state.books}
+                        update={this.updateShelf}
+                        shelf='read'
+                      />
+                    </ol>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className='open-search'>
