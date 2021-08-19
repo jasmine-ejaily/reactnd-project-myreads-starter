@@ -18,9 +18,11 @@ class BooksApp extends React.Component {
 
   //Getting the books currently in database and filling the array
   getBooks() {
-    BooksAPI.getAll().then((books) => {
-      this.setState(() => ({ books }));
-    });
+    BooksAPI.getAll()
+      .then((books) => {
+        this.setState(() => ({ books }));
+      })
+      .catch((rej) => console.log("Request Rejected: ", rej));
   }
 
   //initial books fetch
@@ -30,7 +32,9 @@ class BooksApp extends React.Component {
 
   //updating the book shelf and then refreshing the books library with the updated data
   updateShelf(bookId, shelf) {
-    BooksAPI.update(bookId, shelf).then(() => this.getBooks());
+    BooksAPI.update(bookId, shelf)
+      .then(() => this.getBooks())
+      .catch((rej) => console.log("Request Rejected: ", rej));
   }
 
   //if the search term is empty, re-render using setState and keep searchRes empty, otherwise fetch books that match the term
@@ -40,7 +44,7 @@ class BooksApp extends React.Component {
           .then((res) => {
             this.setState(() => ({ searchRes: this.filterBooks(res) }));
           })
-          .catch((rej) => console.log("rejected", rej))
+          .catch((rej) => console.log("Request Rejected: ", rej))
       : this.setState(() => ({ searchRes: "" }));
   }
 
