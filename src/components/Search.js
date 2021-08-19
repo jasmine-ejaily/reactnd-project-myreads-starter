@@ -5,26 +5,29 @@ import ListRes from "./ListRes";
 const Search = (props) => {
   const handleChange = (e) => {
     const value = e.target.value;
-    console.log("term", value);
     props.search(value);
   };
+
   return (
-    <div className='search-books'>
-      <div className='search-books-bar'>
-        <Link className='close-search' to='/'>
+    <div className="search-books">
+      <div className="search-books-bar">
+        {/*button to homepage*/}
+        <Link className="close-search" to="/">
           Close
         </Link>
-        <div className='search-books-input-wrapper'>
+        <div className="search-books-input-wrapper">
           <input
-            type='text'
-            placeholder='Search by title or author'
-            name='query'
+            type="text"
+            placeholder="Search by title or author"
+            name="query"
             onChange={handleChange}
           />
         </div>
       </div>
-      <div className='search-books-results'>
-        <ol className='books-grid'>
+      {/*display search results*/}
+      <div className="search-books-results">
+        <ol className="books-grid">
+          {/*if results exist, display*/}
           {props.res && <ListRes books={props.res} update={props.update} />}
         </ol>
       </div>

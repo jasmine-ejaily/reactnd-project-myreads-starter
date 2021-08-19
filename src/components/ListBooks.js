@@ -3,6 +3,7 @@ import Book from "./Book";
 
 const ListBooks = (props) => {
   const { books, update, shelf } = props;
+  //only display books if the book's own shelf matches the assigned shelf
   return books
     .filter((book) => book.shelf === shelf)
     .map((book) => (
@@ -10,7 +11,7 @@ const ListBooks = (props) => {
         <Book
           id={book.id}
           title={book.title}
-          author={book.authors}
+          authors={book.authors}
           cover={book.imageLinks.thumbnail}
           shelf={book.shelf}
           book={book}
